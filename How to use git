@@ -1,0 +1,92 @@
+[작업 위치]
+//pwd : Print working directory; 현재 작업 위치 알려줌.
+//ls : list files; 현재의 directory의 모든 파일들을 보여줌.
+//cd .. : 상위 디렉토리로 이동.
+//cd ~ :사용자의 홈디렉토리(/Users/hannah)로 감.
+//cd 디렉토리명 : change directory; 원하는 디렉토리로 이동; 다만 건너뛸 수는 없음. 한 칸씩 단계적으로 들어가야 함.
+
+[디렉토리 / 폴더]
+//mkdir 디렉토리명 : make directory; 새로운 directory 생성.
+//rm –rf 디렉토리명 : 디렉토리 삭제. 디렉토리와 디렉토리 하위의 모든 파일까지 삭제.
+//cp -R <sourcedir> <destdir> : 디렉토리 복사. (Sourcedir: 카피하고 싶은 폴더명, destdir: 옮기고싶은 폴더명.)
+
+[파일]
+//cat 파일명 : 파일의 contents를 보여줌.
+//touch .파일명: 파일 만들기. Ex) touch .DS_Store (DS_Store라는 파일 만들기)
+//echo "파일내용" > 파일명 : 내용과 함께 새로운 파일 만들기. Ex) echo "project test" > test.html ('project test'라는 내용이 있는 test.html 파일을 생성)
+//파일명 .gitignore : 무시해야할 소스파일 만들기. 소스파일 버전관리.
+//ls -al | grep .파일명 : 특정 파일 불러오기. 찾고 싶은 파일이 있을 때. Ex) ls -al | grep .gitconfig (gitconfig파일 찾기)
+
+[etc.]
+//ctrl + L : 터미널 화면 clear (화면이 너무 복잡할 때).
+
+//git config --global user.name "깃허브 가입 계정(이름)"
+//git config --global user.email "깃허브 가입 이메일
+
+[add]
+//git add . : 현재 디렉토리 밑에 있는 추가되지 않은 모든 파일을 staging area에 한번에 추가.
+//git add 파일,폴더명 : 해당 경로의 파일 추가
+//git add -i : 여러가지 명령 프롬프트가 나오게 함. 원하는 액션에 맞는 번호를 바로 입력하면 됨. 다른 사람들과 공동작업을 할 때 특히 이렇게 하는 게 좋음.
+
+[status]
+//git status : 레포지토리의 상태를 보여주는 명령어. 현재 브랜치, 원격 브랜치, 현재 추적중인 파일, 변경된 파일목록 등이 표시됨.
+    *On branch master: 현재 브랜치는 'master'라는 뜻.
+    *No commits yet: 아직 commit한 내용은 없음.
+    *Staging area로 들어갈 준비가 된 파일: index.html
+    *추가되지 않은 파일(git add가 되지 않은 파일) : hello.html
+    *add되지 않은 파일은 commit이 될 수 없기 때문에 지금 상태로 commit을 하게 되면 여전히 working directory에 남아있게 된다.
+  
+[remove]
+//git rm –cached [파일경로] : staging directory에 추가된 파일을 다시 working directory로 내려보내는 명령어. (명령어에 대괄호[]는 입력하지 않음)
+//git rm -r --cached . : 현재 staging directory에 있는 모든 파일을 한꺼번에 다시 workind directory로 내리기.
+  
+[commit]
+//git commit : 입력해야할 커밋메시지가 긴 경우에 사용. 줄 바꿀이나 띄어쓰기가 가능. 이 명령어를 입력하면 디폴트 에디터가 출력됨. 에디터에서 메시지를 입력한 후 저장(esc + :wq)하면 커밋이 됨.
+//git commit –m "커밋 메시지" : m은 메시지의 약자. 타이틀정도로 간략하게 메시지를 입력하는 경우에 사용.
+//git commit -a–m "커밋 메시지" : working directory에 있는 파일들이 staging area를 거쳐서 커밋되는 것이 일반적이지만, 이 명령으로 staging area를 거치지 않고 바로 커밋할 수 있게 됨.
+ 
+[log]
+//git log : 현재 브랜치의 커밋이력을 디테일하게 볼 수 있음. 타이틀 메시지, 컨텐츠 메시지, 누가커밋 했는지 등 전반적인 정보를 준다. 조회가 끝나면 'q로 화면나가기 
+//git log --oneline : 말 그대로 한줄(oneline으로)로 간단하게 보여달라는 명령어. 커밋이력 중 커밋 ID, 타이틀 메시지(에디터로 커밋했을 때 첫번째 줄에 있는 정보/ 혹은 -m뒤에 따라오는 정보)만 조회.
+//git log --oneline --decorate --graph --all : 모든 브랜치의 커밋이력을 조회하게 됨. 브랜치가 한 개라면 단순하게 한 줄로 표시가 됨.
+    * --oneline : 한 줄로 간단하게
+    * --decorate : 어떤 브랜치인지 --all을 빼고 입력하면 master를 포함해 모든 브랜치 내용을 볼 수 있음
+//git log -- [파일경로] : 특정 파일의 변경 커밋내용만 조회.  (명령어에 대괄호[]는 입력하지 않음)
+  
+[diff]
+git diff : 현재 브랜치의 마지막 커밋과 working directory의 차이점 비교. highlight된 부분으로 어떤 부분이 달라졌는지 알려줌.
+git diff [Commit ID] : 특정 커밋과의 차이점 비교. (명령어에 대괄호[]는 입력하지 않음)
+git diff [Commit ID] -- [파일 경로] : 특정 커밋의 특정 파일이 스냅샷이 찍힌 시점과 현재 working directory의 파일 내용이 어떻게 다른 지 비교.  (명령어에 대괄호[]는 입력하지 않음)
+  
+[branch]
+git branch : 브랜치 목록 조회.
+git branch [브랜치명] : 브랜치 생성.
+//git init : 특정 디렉토리를 git repository(master)로 지정하기. cd git_branch로 git_branch 디렉토리 내부로 옮겨간 후에git init을 하게되면, 해당 디렉토리를 git repository로 만듦과 동시에 master가 생성된다.
+git branch -d [브랜치명] : 브랜치 삭제.
+git branch -m [oldName][newName] : 브랜치 이름변경. (oldName: 현재 브랜치명, newName: 변경할 브랜치명)
+git checkout -b [브랜치명] : 브랜치 생성과 동시에 만들어진 브랜치로 바로 옮겨가는 명령어.
+
+[checkout]
+git checkout [브랜치명] : 특정 브랜치로 워킹 디렉토리 변경. 브랜치 이동하기.
+git checkout [Commit ID] : 특정 커밋으로 워킹 디렉토리 변경. 커밋이 완료된 상태에서 특정 커밋으로 가고 싶을 때는, git log --oneline으로 Commit ID를 확인해서 옮겨가면 된다.
+git checkout [Commit ID] -- [파일경로] : 특정 파일을 해당 브랜치 또는 커밋 상태로 변경.
+
+[merge]
+git merge [브랜치명] : 브랜치 병합
+
+[Vim]
+vim [파일경로] : 터미널에서 파일 내용(본문)을 수정하는 명령어. (내용 추가 후) esc + :wq 로 저장
+
+[remote add]
+git remote add [alias별칭][gitURL] : 로컬 repository를 원격 repository와 연동을 하려면 로컬 저장소에 원격 저장소 URL을 등록해줘야 한다.
+즉, 로컬 저장소에 원격 저장소 URL을 등록해서 연동하는 명령어.
+
+[fetch & pull]
+git fetch [alias별칭][브랜치명] : 원격 repository에 있는 내용을 로컬 repository로 다운로드 하는 명령어.
+git pull [alias별칭][브랜치명] : fetch와 같은 동작을 수행하지만 원격저장소의 내용을 로컬 저장소로 받고, 자동으로 merge 까지 수행함(fetch + merge의 효과). Working directory에 바로 반영됨.
+
+[push]
+git push -u [alias별칭][브랜치명] : 로컬 repository의 내용을 원격 repository로 업로드하는 명령어
+
+[clone]
+git clone [url] : 공개된 원격 저장소에서 다운로드를 하는 명령어.
