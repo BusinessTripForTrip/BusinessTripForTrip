@@ -1,3 +1,24 @@
+{일반적인 GitHub 업로드순서}
+1. git config --list로 username와 useremail 확인
+2. git init로 현재 경로에 repository 세팅
+3. git add . or git add 파일,폴더명으로 stagin area에 추가
+4. git status로 확인
+5. git commit -m "주석"으로 주석(커밋메시지) 작성 및 커밋
+6. git remote add origin "깃허브 repository 주소"로 repository 주소 입력
+7. git push -u origin master(or main)으로 깃허브에 Push
+
+*Working Directory: 현재 파일을 작업(추가, 수정, 삭제)하고 있는 영역
+*Staging Area: Working Directory에서 add 명령어를 통해 파일이 이동되는 영역, commit전의 상태
+*Repository: commit과 push 명령어를 통해 최종적으로 commit한 사항을 원격 저장소로 업로드함
+
+*origin: 원격 저장소의 주소
+*master: 현재 브랜치
+→ git push origin master의 뜻은 대략
+"내가 등록한 원격 저장소(origin)안에서 master 브랜치로 push하겠다" 로 해석할 수 있습니다!
+(브랜치는 git에서 협업, 버전 관리를 위해 '가지'를 따서 작업할 때 사용되는 개념입니다.)
+
+---------------------------------------------------------------------------------------
+
 [작업 위치]
 //pwd : Print working directory; 현재 작업 위치 알려줌.
 //ls : list files; 현재의 directory의 모든 파일들을 보여줌.
@@ -54,39 +75,38 @@
 //git log -- [파일경로] : 특정 파일의 변경 커밋내용만 조회.  (명령어에 대괄호[]는 입력하지 않음)
   
 [diff]
-git diff : 현재 브랜치의 마지막 커밋과 working directory의 차이점 비교. highlight된 부분으로 어떤 부분이 달라졌는지 알려줌.
-git diff [Commit ID] : 특정 커밋과의 차이점 비교. (명령어에 대괄호[]는 입력하지 않음)
-git diff [Commit ID] -- [파일 경로] : 특정 커밋의 특정 파일이 스냅샷이 찍힌 시점과 현재 working directory의 파일 내용이 어떻게 다른 지 비교.  (명령어에 대괄호[]는 입력하지 않음)
+//git diff : 현재 브랜치의 마지막 커밋과 working directory의 차이점 비교. highlight된 부분으로 어떤 부분이 달라졌는지 알려줌.
+//git diff [Commit ID] : 특정 커밋과의 차이점 비교. (명령어에 대괄호[]는 입력하지 않음)
+//git diff [Commit ID] -- [파일 경로] : 특정 커밋의 특정 파일이 스냅샷이 찍힌 시점과 현재 working directory의 파일 내용이 어떻게 다른 지 비교.  (명령어에 대괄호[]는 입력하지 않음)
   
 [branch]
-git branch : 브랜치 목록 조회.
-git branch [브랜치명] : 브랜치 생성.
+//git branch : 브랜치 목록 조회.
+//git branch [브랜치명] : 브랜치 생성.
 //git init : 특정 디렉토리를 git repository(master)로 지정하기. cd git_branch로 git_branch 디렉토리 내부로 옮겨간 후에git init을 하게되면, 해당 디렉토리를 git repository로 만듦과 동시에 master가 생성된다.
-git branch -d [브랜치명] : 브랜치 삭제.
-git branch -m [oldName][newName] : 브랜치 이름변경. (oldName: 현재 브랜치명, newName: 변경할 브랜치명)
-git checkout -b [브랜치명] : 브랜치 생성과 동시에 만들어진 브랜치로 바로 옮겨가는 명령어.
+//git branch -d [브랜치명] : 브랜치 삭제.
+//git branch -m [oldName][newName] : 브랜치 이름변경. (oldName: 현재 브랜치명, newName: 변경할 브랜치명)
+//git checkout -b [브랜치명] : 브랜치 생성과 동시에 만들어진 브랜치로 바로 옮겨가는 명령어.
 
 [checkout]
-git checkout [브랜치명] : 특정 브랜치로 워킹 디렉토리 변경. 브랜치 이동하기.
-git checkout [Commit ID] : 특정 커밋으로 워킹 디렉토리 변경. 커밋이 완료된 상태에서 특정 커밋으로 가고 싶을 때는, git log --oneline으로 Commit ID를 확인해서 옮겨가면 된다.
-git checkout [Commit ID] -- [파일경로] : 특정 파일을 해당 브랜치 또는 커밋 상태로 변경.
+//git checkout [브랜치명] : 특정 브랜치로 워킹 디렉토리 변경. 브랜치 이동하기.
+//git checkout [Commit ID] : 특정 커밋으로 워킹 디렉토리 변경. 커밋이 완료된 상태에서 특정 커밋으로 가고 싶을 때는, git log --oneline으로 Commit ID를 확인해서 옮겨가면 된다.
+//git checkout [Commit ID] -- [파일경로] : 특정 파일을 해당 브랜치 또는 커밋 상태로 변경.
 
 [merge]
-git merge [브랜치명] : 브랜치 병합
+//git merge [브랜치명] : 브랜치 병합
 
 [Vim]
-vim [파일경로] : 터미널에서 파일 내용(본문)을 수정하는 명령어. (내용 추가 후) esc + :wq 로 저장
+//vim [파일경로] : 터미널에서 파일 내용(본문)을 수정하는 명령어. (내용 추가 후) esc + :wq 로 저장
 
 [remote add]
-git remote add [alias별칭][gitURL] : 로컬 repository를 원격 repository와 연동을 하려면 로컬 저장소에 원격 저장소 URL을 등록해줘야 한다.
-즉, 로컬 저장소에 원격 저장소 URL을 등록해서 연동하는 명령어.
+//git remote add [alias별칭][gitURL] : 로컬 repository를 원격 repository와 연동을 하려면 로컬 저장소에 원격 저장소 URL을 등록해줘야 한다. 즉, 로컬 저장소에 원격 저장소 URL을 등록해서 연동하는 명령어.
 
 [fetch & pull]
-git fetch [alias별칭][브랜치명] : 원격 repository에 있는 내용을 로컬 repository로 다운로드 하는 명령어.
-git pull [alias별칭][브랜치명] : fetch와 같은 동작을 수행하지만 원격저장소의 내용을 로컬 저장소로 받고, 자동으로 merge 까지 수행함(fetch + merge의 효과). Working directory에 바로 반영됨.
+//git fetch [alias별칭][브랜치명] : 원격 repository에 있는 내용을 로컬 repository로 다운로드 하는 명령어.
+//git pull [alias별칭][브랜치명] : fetch와 같은 동작을 수행하지만 원격저장소의 내용을 로컬 저장소로 받고, 자동으로 merge 까지 수행함(fetch + merge의 효과). Working directory에 바로 반영됨.
 
 [push]
-git push -u [alias별칭][브랜치명] : 로컬 repository의 내용을 원격 repository로 업로드하는 명령어
+//git push -u [alias별칭][브랜치명] : 로컬 repository의 내용을 원격 repository로 업로드하는 명령어
 
 [clone]
-git clone [url] : 공개된 원격 저장소에서 다운로드를 하는 명령어.
+//git clone [url] : 공개된 원격 저장소에서 다운로드를 하는 명령어.
