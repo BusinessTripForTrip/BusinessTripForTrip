@@ -11,6 +11,8 @@
 *Staging Area: Working Directory에서 add 명령어를 통해 파일이 이동되는 영역, commit전의 상태
 *Repository: commit과 push 명령어를 통해 최종적으로 commit한 사항을 원격 저장소로 업로드함
 
+*remote는 원격, local은 로컬 저장소
+
 *origin: 원격 저장소의 주소
 *master: 현재 브랜치
 → git push origin master의 뜻은 대략
